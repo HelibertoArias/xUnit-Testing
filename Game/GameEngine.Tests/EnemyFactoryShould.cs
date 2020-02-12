@@ -5,9 +5,11 @@ using Xunit;
 
 namespace GameEngine.Tests
 {
+    [Trait("Category", "Enemy")]
+
     public class EnemyFactoryShould
     {
-        [Fact]
+        [Fact(Skip ="Don't neet to run this")]
         public void CreateNormalEnemyByDefaul()
         {
             var sut = new EnemyFactory();
