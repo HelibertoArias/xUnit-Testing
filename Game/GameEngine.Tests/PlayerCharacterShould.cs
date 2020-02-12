@@ -117,6 +117,29 @@ namespace GameEngine.Tests
                                     () => _sut.TakeDamage(10));
         }
 
-      
+        [Fact]
+        public void TakeMediumDamage()
+        {
+            _sut.TakeDamage(50);
+            Assert.Equal(1, _sut.Health);
+        }
+
+        public void HaveMinimunHealth()
+        {
+            _sut.TakeDamage(101);
+            Assert.Equal(1, _sut.Health);
+        }
+
+        [Theory]
+        [InlineData(0,100)]
+        [InlineData(1,99)]
+        [InlineData(50,50)]
+        [InlineData(101,1)]
+        public void TakeDamage(int damage, int expectedHealth)  
+        {
+            _sut.TakeDamage(damage);
+            Assert.Equal(expectedHealth, _sut.Health);
+        }
+
     }
 }
